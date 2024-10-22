@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 const Blog = ({ blog, handelBookMark, handelMarksRead }) => {
   const {
+    id,
     title,
     reading_time,
     posted_date,
@@ -46,7 +47,7 @@ const Blog = ({ blog, handelBookMark, handelMarksRead }) => {
           <div className="pt-2">
             <p className="font-bold text-2xl">{title}</p>
             <button
-              onClick={() => handelMarksRead(reading_time)}
+              onClick={() => handelMarksRead(id,reading_time)}
               className="text-red-500 underline underline-offset-1 bg-white"
             >
               {marks_read}
