@@ -6,10 +6,15 @@ import { useState } from "react";
 
 function App() {
   const [bookmarks, setBookmarks] = useState([]);
+  const [marksread, setMarksread] = useState(0);
 
   const handelBookMark = (blog) => {
     const newBookMark = [...bookmarks, blog];
     setBookmarks(newBookMark);
+  };
+
+  const handelMarksRead = (time) => {
+    setMarksread(marksread + time);
   };
 
   return (
@@ -17,11 +22,14 @@ function App() {
       <Header></Header>
       <main className="grid sm:grid-cols-3 flex-col-reverse my-8 gap-5 ">
         <div className="col-span-2 border rounded-xl">
-          <Blogs handelBookMark={handelBookMark}></Blogs>
+          <Blogs
+            handelBookMark={handelBookMark}
+            handelMarksRead={handelMarksRead}
+          ></Blogs>
         </div>
 
         <div className=" bg-slate-300 border rounded-xl">
-          <Bookmarks bookmarks={bookmarks}></Bookmarks>
+          <Bookmarks bookmarks={bookmarks} marksread={marksread}></Bookmarks>
         </div>
       </main>
     </div>
